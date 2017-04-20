@@ -33,3 +33,35 @@
       when: ansible_os_family == 'RedHat'
 
     - role: kostyrev.datastax-dsc
+
+  tasks:
+
+    - block:
+        - name: install scl for there is no python2.7 in centos 6.8
+          package:
+            name: centos-release-scl
+            state: present
+        - name: install python27
+          package:
+            name: python27
+            state: present
+      when:
+        - ansible_distribution == 'CentOS'
+        - ansible_distribution_major_version|version_compare(6, '==')
+
+    - block:
+        - name: install python-pip
+          package:
+            name: python-pip
+            state: present
+        - name: install cqlsh from pip
+          pip:
+            name: cqlsh
+            state: present
+        - name: use newer version of cqlsh
+          lineinfile:
+            path: /etc/environment
+            line: 'CQLSH_NO_BUNDLED=TRUE'
+      when:
+        - ansible_os_family == "RedHat"
+        - datastax_dsc_patch|version_compare(6, '<=')
