@@ -33,6 +33,4 @@
   service:
     name: cassandra
     state: started
-  notify:
-    - wait_for cassandra
   when: datastax_dsc_manage_cassandra_service
