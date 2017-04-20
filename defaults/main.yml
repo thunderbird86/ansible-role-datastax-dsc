@@ -3,7 +3,6 @@
 datastax_dsc_major: 2
 datastax_dsc_minor: 2
 datastax_dsc_patch: 6
-datastax_dsc_pkg_name: "dsc{{ datastax_dsc_major }}{{ datastax_dsc_minor }}-{{ datastax_dsc_major }}.{{ datastax_dsc_minor }}.{{ datastax_dsc_patch }}"
 datastax_dsc_cassandra_user: cassandra
 datastax_dsc_cassandra_group: "{{ datastax_dsc_cassandra_user }}"
 datastax_dsc_cassandra_conf_dir_mode: '0755'
