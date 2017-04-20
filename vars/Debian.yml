@@ -1,0 +1,9 @@
+---
+
+datastax_dsc_packages:
+  - "{{ datastax_dsc_pkg_name }}"
+  - libjemalloc1
+
+datastax_dsc_conf_dir: /etc/cassandra
+
+cassandra_log_name: system.log

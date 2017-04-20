@@ -1,0 +1,23 @@
+---
+dependency:
+  name: galaxy
+  requirements_file: requirements.yml
+  options:
+    ignore-certs: True
+
+driver:
+  name: docker
+docker:
+  containers:
+    - name: centos-6-cassandra
+      image: centos
+      image_version: 6
+      cap_add: SYS_RESOURCE
+
+    - name: ubuntu-14-04
+      image: ubuntu
+      image_version: 14.04
+      cap_add: SYS_RESOURCE
+
+verifier:
+  name: testinfra
